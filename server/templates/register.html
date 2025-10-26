@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Register — Smart Library</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <div class="auth-container">
+      <h1>📚 Smart Library</h1>
+      <h2>Create an account</h2>
+
+      <form action="/register" method="post">
+        <input type="text" name="name" placeholder="Full Name" required />
+        <input type="email" name="email" placeholder="Email Address" required />
+        <button type="submit">Register</button>
+      </form>
+
+      <p>Already have an account? <a href="/login">Login</a></p>
+    </div>
+  </body>
+</html>

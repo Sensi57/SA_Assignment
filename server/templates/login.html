@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Login — Smart Library</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <div class="auth-container">
+      <h1>📚 Smart Library</h1>
+      <h2>Login</h2>
+
+      {% if error %}
+      <p class="error">{{ error }}</p>
+      {% endif %}
+
+      <form action="/login" method="post">
+        <input
+          type="email"
+          name="email"
+          placeholder="Enter your email"
+          required
+        />
+        <button type="submit">Login</button>
+      </form>
+
+      <p>Don't have an account? <a href="/register">Register here</a></p>
+    </div>
+  </body>
+</html>

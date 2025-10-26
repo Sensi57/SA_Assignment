@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Dashboard — Smart Library</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Smart Library Dashboard</h1>
+        <p>Welcome, {{ user.name }} ({{ user.email }})</p>
+      </header>
+
+      <section class="forms">
+        <div class="card">
+          <h2>Add New Book</h2>
+          <form action="/api/addBook" method="post">
+            <input type="text" name="title" placeholder="Title" required />
+            <input type="text" name="author" placeholder="Author" required />
+            <input type="number" name="copies" placeholder="Copies" value="1" />
+            <button type="submit">Add Book</button>
+          </form>
+        </div>
+
+        <div class="card">
+          <h2>Borrow Book</h2>
+          <form action="/api/borrowBook" method="post">
+            <input type="number" name="user_id" value="{{ user.id }}" hidden />
+            <input
+              type="number"
+              name="book_id"
+              placeholder="Book ID"
+              required
+            />
+            <button type="submit">Borrow</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="data">
+        <h2>📖 All Books</h2>
+        {% if books %}
+        <table>
+          <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Available</th>
+          </tr>
+          {% for book in books %}
+          <tr>
+            <td>{{ book["id"] }}</td>
+            <td>{{ book["title"] }}</td>
+            <td>{{ book["author"] }}</td>
+            <td>{{ book["copies_available"] }}</td>
+          </tr>
+          {% endfor %}
+        </table>
+        {% else %}
+        <p>No books in the library yet.</p>
+        {% endif %}
+      </section>
+    </div>
+  </body>
+</html>
